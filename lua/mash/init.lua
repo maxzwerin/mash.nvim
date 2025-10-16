@@ -66,7 +66,6 @@ end
 local function clear()
     vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
     targets = {}
-    vim.api.nvim_command("redraw")
 end
 
 local function get_valid_labels()
@@ -96,6 +95,7 @@ end
 local function highlight_matches(query)
     clear()
     dim_visible_window()
+    vim.api.nvim_command("redraw")
 
     targets = {}
     ducks = {} -- an array of chars
@@ -129,8 +129,7 @@ local function highlight_matches(query)
     end
 
     -- get valid labels
-    local valid_labels = get_valid_labels(matches)
-    print(vim.inspect(valid_labels))
+    local valid_labels = get_valid_labels()
 
     -- FUCK
     local label_index = 1
@@ -230,6 +229,8 @@ function M.jump()
                 if input == target.label then
                     vim.api.nvim_win_set_cursor(0, { target.lnum + 1, target.col })
                     clear()
+                    dim_visible_window()
+                    vim.api.nvim_command("redraw")
                     return
                 end
             end
