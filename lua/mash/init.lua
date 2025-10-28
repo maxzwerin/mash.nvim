@@ -229,7 +229,7 @@ function M.jump()
                 if input == target.label then
                     vim.api.nvim_win_set_cursor(0, { target.lnum + 1, target.col })
                     clear()
-                    dim_visible_window()
+                    --dim_visible_window()
                     vim.api.nvim_command("redraw")
                     return
                 end
