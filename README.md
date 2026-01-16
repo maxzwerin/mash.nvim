@@ -1,9 +1,8 @@
-shoutout flash.nvim <3
+inspired by: https://github.com/folke/flash.nvim
 
-in init.lua file:
-
+to install mash in your init.lua file using nvim nightly:
 ```lua
-vim.pack.add({ src = https://github.com/maxzwerin/mash.nvim })
+vim.pack.add({ src = "https://github.com/maxzwerin/mash.nvim" })
 
 local mash = require("mash")
 mash.setup()
